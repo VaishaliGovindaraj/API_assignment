@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TamilMusic</title>
+    <link rel="stylesheet" href="./styles/styles.css">
+    <script src="./scripts/jquery-3.7.1.min.js"></script>
+    <script src="./scripts/script.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Tamil Music</h1>
+    </header>
+    <section class="section">
+        <div class="search_song_by_any_artist">
+            <div class="label_section">
+            <label for="search_artist" id="search_by_artist_label">Search song by any Artist</label>
+            <input type="text" id="search_by_artist" name="search_artist">
+            </div>
+            <button class="search_any_artist">Search songs by Artists</button>
+        </div>
+        <div class="button-group">
+            <button class="search_artist">Search songs by Top Tamil Artists</button>
+            <button class="search_album">Search songs by Album</button>
+            <button class="fav_button">Favourites</button>
+        </div>
+        <div class="facts"></div>
+    </section>
+    <div class="artist-card">
+        <button class="close">&times;</button>
+        <h2>Artist Details</h2>
+        <div class="card-content"></div>
+    </div>
+</body>
+</html>

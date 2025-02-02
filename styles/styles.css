@@ -1,0 +1,135 @@
+*{
+    box-sizing: border-box;
+    margin:0;
+    padding: 0;
+}
+
+html{
+    height:100vh;
+}
+
+body{
+    min-height: 100%;
+    background-color: rgb(163, 163, 233);
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: white;
+    text-align: center;
+    background: url('../images/background_image.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+header h1 {
+    font-size: 3rem;
+    padding: 20px;
+}
+
+.section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    font-size: 1.5rem;
+    margin-top: 20px;
+}
+
+.search_song_by_any_artist{
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    padding:32px;
+}
+
+#search_by_artist_label{
+    color:#fff;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding:8px;
+    background-color: black;
+    opacity: 0.7;
+}
+
+.search_any_artist{
+    margin:8px;
+}
+
+button {
+    padding: 10px 20px;
+    margin:8px;
+    background-color: #0a0118;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.5rem;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #3b362e;
+}
+
+.facts {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    padding: 20px;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.artist {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.3s;
+    cursor: pointer;
+}
+
+.artist:hover {
+    transform: scale(1.05);
+}
+
+.artist img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.artist a {
+    color: #1db954;
+    text-decoration: none;
+    display: block;
+    margin-top: 10px;
+}
+
+.artist-card {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    display: none;
+    z-index: 10;
+}
+
+.artist-card h2 {
+    margin-bottom: 10px;
+}
+
+.artist-card .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
