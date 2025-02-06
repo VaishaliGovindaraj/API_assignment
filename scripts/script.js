@@ -106,23 +106,23 @@ $(() => {
 
     }
 
-    const searchbyalbum= async () => {
+    const searchbyalbum = async () => {
 
-        let searchByAlbum =  $('#search_by_album').val();
+        let searchByAlbum = $('#search_by_album').val();
         console.log(searchByAlbum);
 
         if (!searchByAlbum) {
             $('.facts').empty();
             $('.facts').append('<div class="error_description">No album found. Please enter an album name.</div>');
-            return; 
+            return;
         }
-       
+
         try {
             let response = await fetch(`https://ws.audioscrobbler.com/2.0/?method=album.search&album=${encodeURIComponent(searchByAlbum)}&api_key=${API_KEY}&format=json`);
             let albumData = await response.json();
             console.log(albumData.results.albummatches);
             albumDetailfetch = albumData.results.albummatches;
-        
+
             if (!albumDetailfetch || albumDetailfetch.length === 0) {
                 $('.facts').empty();
                 $('.facts').append('<div class="error_description">No album found.</div>');
@@ -130,44 +130,43 @@ $(() => {
                 return;
             }
 
-                $('.facts').empty();
-                let albumDetails = albumDetailfetch.album;
+            $('.facts').empty();
+            let albumDetails = albumDetailfetch.album;
 
-                albumDetails.forEach(album => {
+            albumDetails.forEach(album => {
 
-                    let artistName = album.artist;
-                    let albumName = album.name;
-                    let albumImageArray = album.image[3];
-                    let albumImage = albumImageArray['#text'];
-                    let albumURL = album.url;
+                let artistName = album.artist;
+                let albumName = album.name;
+                let albumImageArray = album.image[3];
+                let albumImage = albumImageArray['#text'];
+                let albumURL = album.url;
 
-                    const artistDiv = `<div class="artist artist_details">
+                const artistDiv = `<div class="artist artist_details">
                         <span class="all_artist_name"> Artist Name : ${artistName}</span>
                         <div class="song_name"> Album Title: ${albumName}</div>
                         <img class="albumimage" src="${albumImage}" alt="Album Art">
                         <a href=${albumURL} target="blank"> Listen here : ${albumName}</a>
                     </div>`;
 
-                    $('.facts').append(artistDiv);
+                $('.facts').append(artistDiv);
 
-                })
-            } catch (error) {
+            })
+        } catch (error) {
             console.error(error);
         }
-        
+
     }
 
     $('.search_album').on("click", searchbyalbum);
     $('.search_artist').on("click", getDetails);
     $(`.search_any_artist`).on("click", searchSongbyArtist);
-    $('.fav_display').on("click", () => 
-        {
-            let savedSong = localStorage.getItem("favMusicDetails");
-            if (savedSong) {
-                displayFavSongs(JSON.parse(savedSong));
-            }
+    $('.fav_display').on("click", () => {
+        let savedSong = localStorage.getItem("favMusicDetails");
+        if (savedSong) {
+            displayFavSongs(JSON.parse(savedSong));
         }
-);
+    }
+    );
 
 
 })
