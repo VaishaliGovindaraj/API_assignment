@@ -1,27 +1,36 @@
-*{
+* {
     box-sizing: border-box;
-    margin:0;
+    margin: 0;
     padding: 0;
 }
 
 html{
-    height:100vh;
+    min-height:100vh;
 }
 
-body{
-    min-height: 100%;
-    background-color: rgb(163, 163, 233);
-    margin: 0;
+body {
+    height:100%;
+    width:100%;
     font-family: Arial, sans-serif;
     color: white;
     text-align: center;
-    background: url('../images/background_image.jpg') no-repeat center center fixed;
-    background-size: cover;
 }
 
-header h1 {
-    font-size: 3rem;
-    padding: 20px;
+
+.video-background-container {
+    width: 100%;
+    min-height: 100vh; 
+}
+
+
+.background-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100vh;
+    object-fit:fill;
+    z-index: -1;
 }
 
 .section {
@@ -30,79 +39,91 @@ header h1 {
     align-items: center;
     gap: 20px;
     font-size: 1.5rem;
-    margin-top: 20px;
+    margin-top: 30px;
 }
 
-.search_song_by_any_artist{
+.search_song_by_any_artist,
+.search_song_by_any_album {
     background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(10px);
-    border-radius: 10px;
-    padding:32px;
+    backdrop-filter: blur(15px);
+    border-radius: 12px;
+    font-size: 1.5rem;
+    padding: 25px;
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
 }
 
-#search_by_artist_label{
-    color:#fff;
-    font-size: 1.2rem;
-    font-weight: bold;
-    padding:8px;
-    background-color: black;
-    opacity: 0.7;
-}
-
-.search_any_artist{
-    margin:8px;
+#search_by_artist,
+#search_by_album {
+    padding: 10px;
+    font-size: 1.5rem;
+    border-radius: 5px;
+    border: none;
+    margin-left: 10px;
 }
 
 button {
-    padding: 10px 20px;
-    margin:8px;
-    background-color: #0a0118;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+    padding: 12px 24px;
+    margin: 8px;
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    color: white;
     font-weight: bold;
-    font-size: 1.5rem;
-    transition: background-color 0.3s;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
 button:hover {
-    background-color: #3b362e;
+    transform: scale(1.05);
+    background: linear-gradient(to right, #2575fc, #6a11cb);
 }
 
 .facts {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
     padding: 20px;
     width: 90%;
-    margin: 0 auto;
+    margin: auto;
 }
 
-.artist {
-    background: rgba(0, 0, 0, 0.8);
-    padding: 15px;
-    border-radius: 10px;
+.artist,
+.artist_details {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 32px;
+    border-radius: 12px;
     text-align: center;
-    transition: transform 0.3s;
+    transition: all 0.3s ease;
     cursor: pointer;
+    font-size: 1.25rem;
 }
 
 .artist:hover {
-    transform: scale(1.05);
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
 }
 
 .artist img {
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
     border-radius: 50%;
+    margin-bottom: 10px;
 }
 
 .artist a {
-    color: #1db954;
+    color: #3878ee;
     text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
     display: block;
     margin-top: 10px;
+}
+
+.artist a:hover,
+.fav_artist a:hover {
+    color: lawngreen;
+    transform: scale(1.3);
 }
 
 .artist-card {
@@ -112,11 +133,25 @@ button:hover {
     transform: translate(-50%, -50%);
     background: rgba(0, 0, 0, 0.9);
     color: white;
-    padding: 20px;
-    border-radius: 10px;
-    width: 300px;
+    padding: 25px;
+    border-radius: 12px;
+    width: 320px;
     display: none;
     z-index: 10;
+    text-align: center;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -55%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
 }
 
 .artist-card h2 {
@@ -132,4 +167,18 @@ button:hover {
     color: white;
     font-size: 1.5rem;
     cursor: pointer;
+    transition: 0.3s;
+}
+
+.artist-card .close:hover {
+    color: red;
+}
+
+.fav_button {
+    background: linear-gradient(to right, #ff416c, #ff4b2b);
+    font-size: 1.25rem;
+}
+
+.fav_button:hover {
+    background: linear-gradient(to right, #ff4b2b, #ff416c);
 }
